@@ -1,0 +1,8 @@
+[flake8]
+exclude = 
+    migrations,
+    __pychache__,
+    manage.py,
+    settings.py,
+
+; docker compose up run --rm app sh -c "flake8"
