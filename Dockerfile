@@ -28,12 +28,15 @@ ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
+    apk add --update --no-cache postgresql-client &&\
+    apk add --update --no-cache --virtual .tmp-build-deps postgresql-dev musl-dev && \
     if [ $DEV = "true" ]; \
        then /py/bin/pip install -r /tmp/requirements.dev.txt ;\
        fi && \
-    #manually installing django and RestFramework
-    /py/bin/pip install "Django>=3.2.4,<3.3" "djangorestframework>=3.12.4,<3.13" && \  
-    rm -rf /tmp 
+    #manually installing django and RestFramework 
+    /py/bin/pip install "Django>=3.2.4,<3.3" "djangorestframework>=3.12.4,<3.13"  "psycopg2>=2.8.6,<2.9" && \  
+    rm -rf /tmp &&\
+    apk del .tmp-build-deps
 # Set PATH to use the virtual environment
 ENV PATH="/py/bin:$PATH"
 
