@@ -24,3 +24,4 @@ class Command(BaseCommand):
                 time.sleep(2)
 
         self.stdout.write(self.style.SUCCESS("Database available!"))
+# noqa
