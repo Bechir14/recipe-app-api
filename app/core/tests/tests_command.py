@@ -11,7 +11,7 @@ from django.test import SimpleTestCase
 
 
 
-@patch('core.managment.commands.wait_for_db.Command.check')
+@patch('core.management.commands.wait_for_db.Command.check')
 class CommandTest(SimpleTestCase):
     
 
