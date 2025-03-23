@@ -1,4 +1,4 @@
-#django command to wait for the db
+# django command to wait for the db
 
 import time 
 
